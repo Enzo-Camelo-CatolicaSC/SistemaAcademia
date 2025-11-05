@@ -7,14 +7,10 @@ public class TelaInstrutores
         {
             Console.Clear();
             Console.WriteLine("=== Instrutores ===");
-            Console.WriteLine("[1] Cadastrar aluno");
-            Console.WriteLine("[2] Matricular aluno");
-            Console.WriteLine("[3] Alterar dados de um aluno");
-            Console.WriteLine("[4] Buscar aluno");
-            Console.WriteLine("[5] Remover aluno");
-            Console.WriteLine("[6] Visualizar todos os alunos");
+            Console.WriteLine("[1] Cadastrar instrutor");
+            Console.WriteLine("[2] Visualizar todos os instrutores");
             Console.WriteLine("[0] Voltar");
-            Console.Write("\nOpção: ");
+            Console.Write(">>> ");
 
             if (!int.TryParse(Console.ReadLine(), out opcao))
             {

@@ -12,3 +12,18 @@ C:\Users\Ferna\Desktop\Projetos\Programação Orientada a Objetos\SistemaAcademi
 C:\Users\Ferna\Desktop\Projetos\Programação Orientada a Objetos\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.pdb
 C:\Users\Ferna\Desktop\Projetos\Programação Orientada a Objetos\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.genruntimeconfig.cache
 C:\Users\Ferna\Desktop\Projetos\Programação Orientada a Objetos\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\ref\Academia.Console.dll
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\bin\Debug\net9.0\Academia.Console.exe
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\bin\Debug\net9.0\Academia.Console.deps.json
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\bin\Debug\net9.0\Academia.Console.runtimeconfig.json
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\bin\Debug\net9.0\Academia.Console.dll
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\bin\Debug\net9.0\Academia.Console.pdb
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.GeneratedMSBuildEditorConfig.editorconfig
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.AssemblyInfoInputs.cache
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.AssemblyInfo.cs
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.csproj.CoreCompileInputs.cache
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.sourcelink.json
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.dll
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\refint\Academia.Console.dll
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.pdb
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\Academia.Console.genruntimeconfig.cache
+E:\Desenvolvimento\SistemaAcademia\Academia.Console\Academia.Console\obj\Debug\net9.0\ref\Academia.Console.dll

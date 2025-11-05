@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Ferna\\Desktop\\Projetos\\Programação Orientada a Objetos\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {}
+    "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Ferna\\Desktop\\Projetos\\Programação Orientada a Objetos\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {
+    "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ferna\\Desktop\\Projetos\\Programação Orientada a Objetos\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
+        "projectUniqueName": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
         "projectName": "Academia.Console",
-        "projectPath": "c:\\Users\\Ferna\\Desktop\\Projetos\\Programação Orientada a Objetos\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
-        "packagesPath": "C:\\Users\\Ferna\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ferna\\Desktop\\Projetos\\Programação Orientada a Objetos\\SistemaAcademia\\Academia.Console\\Academia.Console\\obj\\",
+        "projectPath": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
+        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
+        "outputPath": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ferna\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

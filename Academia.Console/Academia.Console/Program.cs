@@ -1,3 +1,6 @@
-﻿ Console.OutputEncoding = System.Text.Encoding.UTF8;
-            TelaPrincipal telaPrincipal = new TelaPrincipal();
-            telaPrincipal.Exibir();
+﻿TelaPrincipal tela_principal = new TelaPrincipal();
+
+while (true)
+{
+    tela_principal.Exibir();
+}

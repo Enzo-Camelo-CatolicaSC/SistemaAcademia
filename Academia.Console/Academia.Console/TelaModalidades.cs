@@ -1,4 +1,4 @@
-﻿public class TelaAlunos
+public class TelaModalidades
 {
     public void Exibir()
     {
@@ -6,9 +6,9 @@
         do
         {
             Console.Clear();
-            Console.WriteLine("=== Alunos ===");
-            Console.WriteLine("[1] Cadastrar aluno");
-            Console.WriteLine("[2] Visualizar todos os alunos");
+            Console.WriteLine("=== Modalidades ===");
+            Console.WriteLine("[1] Cadastrar modalidade");
+            Console.WriteLine("[2] Visualizar todas as modalidades");
             Console.WriteLine("[0] Voltar");
             Console.Write(">>> ");
 
@@ -26,13 +26,13 @@
                     break;
 
                 case 1:
-                    Console.WriteLine("Cadastrar aluno.");
+                    Console.WriteLine("Cadastrar modalidade.");
                     break;
 
                 case 2:
-                    Console.WriteLine("Matricular aluno.");
+                    Console.WriteLine("Visualizar todas as modalidades.");
                     break;
-                    
+
                 default:
                     Console.WriteLine("Opção inválida. Pressione qualquer tecla para continuar...");
                     Console.ReadKey();

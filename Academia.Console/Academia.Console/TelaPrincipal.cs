@@ -2,45 +2,60 @@
 {
     public void Exibir()
     {
-        int opcao = 0;
+        Console.Clear();
+        Console.WriteLine("\n=== Tela inicial ===\n");
+        Console.WriteLine("Selecione a opção que você deseja administrar:\n");
+        Console.WriteLine("[1] Matriculas");
+        Console.WriteLine("[2] Alunos");
+        Console.WriteLine("[3] Instrutores");
+        Console.WriteLine("[4] Aulas");
+        Console.WriteLine("[5] Modalidades");
+        Console.WriteLine("[6] Financeiro");
+        Console.WriteLine("[0] Sair");
+        Console.Write(">>> ");
+        string opcao = Console.ReadLine();
 
-        do
+        switch (opcao)
         {
-            Console.Clear();
-            Console.WriteLine("=== Bem-vindo ===");
-            Console.WriteLine("Selecione a opção que você deseja administrar:");
-            Console.WriteLine("[1] Academia");
-            Console.WriteLine("[2] Alunos");
-            Console.WriteLine("[3] Instrutores");
-            Console.WriteLine("[4] Aulas");
-            Console.WriteLine("[0] Sair");
-            Console.Write("\nOpção: ");
+            case "0":
+                Console.WriteLine("\nSaindo do sistema...");
+                return;
+            
+            case "1":
+                TelaMatriculas tela_matriculas = new TelaMatriculas();
+                tela_matriculas.Exibir();
+                break;
 
-            if (!int.TryParse(Console.ReadLine(), out opcao))
-                opcao = -1;
+            case "2":
+                TelaAlunos tela_alunos = new TelaAlunos();
+                tela_alunos.Exibir();
+                break;
 
-            switch (opcao)
-            {
-                case 0:
-                    Console.WriteLine("Saindo do sistema...");
-                    break;
-                case 1:
-                    new TelaAcademia().Exibir();
-                    break;
-                case 2:
-                    new TelaAlunos().Exibir();
-                    break;
-                case 3:
-                    new TelaInstrutores().Exibir();
-                    break;
-                    
-                default:
-                    Console.WriteLine("Opção inválida. Pressione qualquer tecla para continuar...");
-                    Console.ReadKey();
-                    break;
-            }
+            case "3":
+                TelaInstrutores tela_instrutores = new TelaInstrutores();
+                tela_instrutores.Exibir();
+                break;
 
-        } while (opcao != 0);
+            // case "4":
+            //     TelaAulas tela_aulas = new TelaAulas();
+            //     tela_aulas.Exibir();
+            //     break;
+
+            // case "5":
+            //     TelaModalidades tela_modalidades = new TelaModalidades();
+            //     tela_modalidades.Exibir();
+            //     break;
+
+            // case "6":
+            //     TelaFinanceiro tela_financeiro = new TelaFinanceiro();
+            //     tela_financeiro.Exibir();
+            //     break;
+            
+            default:
+                Console.WriteLine("\nOpção inválida. Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                break;
+        }
     }
 }
         
