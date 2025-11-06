@@ -1,6 +1,6 @@
 public class TelaMatriculas
 {
-    public void Exibir()
+    public void exibir()
     {
         int opcao;
         do

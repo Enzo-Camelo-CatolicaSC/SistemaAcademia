@@ -31,7 +31,7 @@ namespace Academia
             this.data_vencimento = DateTime.Now.AddMonths(meses_de_duracao);
             this.esta_ativa = true;
 
-            this.aluno.RealizarMatricula();
+            this.aluno.realizar_matricula();
 
             CalcularValor();
         }

@@ -11,15 +11,15 @@ namespace Academia
             this.modalidades = new List<string>(); // Sempre inicialize listas!
         }
 
-        public void AdicionarModalidade(string modalidade)
+        public void adicionar_modalidade(string nome_modalidade)
         {
-            if (!modalidades.Contains(modalidade))
+            if (!string.IsNullOrWhiteSpace(nome_modalidade) && !this.modalidades.Contains(nome_modalidade))
             {
-                modalidades.Add(modalidade);
+                this.modalidades.Add(nome_modalidade);
             }
         }
 
-        public string AulaMaisProxima()
+        public string aula_mais_proxima()
         {
             // Lógica para buscar a próxima aula no sistema
             return "Aula de Spinning - Amanhã às 18h00";

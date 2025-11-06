@@ -12,14 +12,14 @@ namespace Academia
             this.matriculado = false;
         }
 
-        public void RealizarMatricula()
+        public void realizar_matricula()
         {
             Matricula matricula = new Matricula(this, new List<Modalidade> { this.modalidade_preferida }, 1);
             this.matriculado = true;
             Console.WriteLine($"Aluno {this.nome} matriculado com sucesso!");
         }
 
-        public bool EstaMatriculado()
+        public bool esta_matriculado()
         {
             return this.matriculado;
         }
