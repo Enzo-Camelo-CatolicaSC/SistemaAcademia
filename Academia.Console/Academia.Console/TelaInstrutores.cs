@@ -9,9 +9,10 @@ public class TelaInstrutores
         {
             Console.Clear();
             Console.WriteLine("=== Menu de Instrutores ===");
-            Console.WriteLine("[1] Cadastrar instrutor");
+            Console.WriteLine("[1] Cadastrar novo instrutor");
             Console.WriteLine("[2] Visualizar todos os instrutores");
-            Console.WriteLine("[3] Associar instrutor a uma modalidade");
+            Console.WriteLine("[3] Visualizar próxima aula de um instrutor");
+            Console.WriteLine("[4] Associar instrutor a uma modalidade");
             Console.WriteLine("[0] Voltar ao menu principal");
             Console.Write(">>> ");
 
@@ -31,7 +32,10 @@ public class TelaInstrutores
                 case 2:
                     visualizar_instrutores();
                     break;
-                case 3:
+                case 3: // <-- NOVO CASE
+                    visualizar_proxima_aula();
+                    break;
+                case 4: // <-- CASE ANTIGO RE-NUMERADO
                     associar_instrutor_modalidade();
                     break;
                 default:
@@ -43,7 +47,7 @@ public class TelaInstrutores
         } while (opcao != 0);
     }
 
-    private void cadastrar_instrutor()
+    public void cadastrar_instrutor()
     {
         Console.Clear();
         Console.WriteLine("--- Cadastro de Novo Instrutor ---");
@@ -82,12 +86,12 @@ public class TelaInstrutores
         Console.ReadKey();
     }
 
-    private void visualizar_instrutores()
+    public void visualizar_instrutores()
     {
         Console.Clear();
         Console.WriteLine("--- Lista de Instrutores Cadastrados ---");
 
-        if (DadosAcademia.instrutores.Count == 0)
+        if (!DadosAcademia.instrutores.Any())
         {
             Console.WriteLine("Nenhum instrutor cadastrado no sistema.");
         }
@@ -97,9 +101,8 @@ public class TelaInstrutores
             {
                 Console.WriteLine($"ID: {instrutor.id}");
                 Console.WriteLine($"Nome: {instrutor.nome}");
-                Console.WriteLine($"Salário: {instrutor.salario:C}"); // Formata como moeda
+                Console.WriteLine($"Salário: {instrutor.salario:C}");
 
-                // Exibe as modalidades associadas
                 if (instrutor.modalidades.Any())
                 {
                     Console.WriteLine($"Modalidades: {string.Join(", ", instrutor.modalidades)}");
@@ -112,11 +115,69 @@ public class TelaInstrutores
             }
         }
 
+        // A lógica de perguntar o ID foi removida daqui.
         Console.WriteLine("\nPressione qualquer tecla para voltar...");
         Console.ReadKey();
     }
 
-    private void associar_instrutor_modalidade()
+    // --- NOVO MÉTODO DEDICADO ---
+    public void visualizar_proxima_aula()
+    {
+        Console.Clear();
+        Console.WriteLine("--- Consultar Próxima Aula do Instrutor ---");
+
+        if (!DadosAcademia.instrutores.Any())
+        {
+            Console.WriteLine("Nenhum instrutor cadastrado para consulta.");
+            Console.WriteLine("\nPressione qualquer tecla para voltar...");
+            Console.ReadKey();
+            return;
+        }
+
+        // Mostra a lista de instrutores para o usuário saber qual ID digitar
+        Console.WriteLine("Instrutores disponíveis:");
+        foreach (var instrutor in DadosAcademia.instrutores)
+        {
+            Console.WriteLine($"ID: {instrutor.id} | Nome: {instrutor.nome}");
+        }
+        Console.WriteLine("---------------------------------");
+
+        Console.Write("\nDigite o ID do instrutor para consultar: ");
+        if (int.TryParse(Console.ReadLine(), out int id_instrutor))
+        {
+            Instrutor? instrutor_selecionado = null;
+            foreach (var instrutor in DadosAcademia.instrutores)
+            {
+                if (instrutor.id == id_instrutor)
+                {
+                    instrutor_selecionado = instrutor;
+                    break;
+                }
+            }
+
+            if (instrutor_selecionado != null)
+            {
+                // Chama o método do objeto instrutor
+                string proxima_aula_info = instrutor_selecionado.aula_mais_proxima();
+
+                Console.WriteLine($"\nVerificando agenda para: {instrutor_selecionado.nome}");
+                Console.WriteLine(proxima_aula_info);
+            }
+            else
+            {
+                Console.WriteLine("Instrutor com o ID informado não foi encontrado.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("ID inválido.");
+        }
+
+        Console.WriteLine("\nPressione qualquer tecla para voltar...");
+        Console.ReadKey();
+    }
+
+    public void associar_instrutor_modalidade()
     {
         Console.Clear();
         Console.WriteLine("--- Associar Instrutor a uma Modalidade ---");

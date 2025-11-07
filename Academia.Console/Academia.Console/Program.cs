@@ -34,20 +34,20 @@
             tela_instrutores.exibir();
             break;
 
-        // case "4":
-        //     TelaAulas tela_aulas = new TelaAulas();
-        //     tela_aulas.Exibir();
-        //     break;
+        case "4":
+            TelaAulas tela_aulas = new TelaAulas();
+            tela_aulas.exibir();
+            break;
 
         case "5":
             TelaModalidades tela_modalidades = new TelaModalidades();
             tela_modalidades.exibir();
             break;
 
-        // case "6":
-        //     TelaFinanceiro tela_financeiro = new TelaFinanceiro();
-        //     tela_financeiro.Exibir();
-        //     break;
+        case "6":
+            TelaFinanceiro tela_financeiro = new TelaFinanceiro();
+            tela_financeiro.exibir();
+            break;
 
         default:
             Console.WriteLine("\nOpção inválida. Pressione qualquer tecla para continuar...");

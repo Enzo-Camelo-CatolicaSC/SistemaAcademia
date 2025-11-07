@@ -45,6 +45,16 @@ public class TelaAlunos
         Console.Clear();
         Console.WriteLine("--- Cadastro de Novo Aluno ---");
 
+        if (!DadosAcademia.modalidades.Any())
+        {
+            Console.WriteLine("\nAVISO: Nenhuma modalidade foi cadastrada no sistema.");
+            Console.WriteLine("Por favor, acesse o menu de modalidades e cadastre ao menos uma antes de registrar um aluno.");
+
+            Console.WriteLine("\nPressione qualquer tecla para voltar...");
+            Console.ReadKey();
+            return;
+        }
+
         try
         {
             Console.Write("Nome completo: ");
@@ -65,22 +75,18 @@ public class TelaAlunos
             Console.Write("\nDigite o nome exato da modalidade de preferência: ");
             string nome_modalidade_escolhida = Console.ReadLine();
 
-            // Busca na lista de modalidades o objeto cujo nome corresponde ao que o usuário digitou
-            Modalidade? modalidade_escolhida = DadosAcademia.modalidades.FirstOrDefault(m => m.nome.Equals(nome_modalidade_escolhida, StringComparison.OrdinalIgnoreCase));
+            Modalidade? modalidade_escolhida = DadosAcademia.modalidades
+                .FirstOrDefault(m => m.nome.Equals(nome_modalidade_escolhida, StringComparison.OrdinalIgnoreCase));
 
-            // Verifica se a modalidade foi encontrada
             if (modalidade_escolhida == null)
             {
                 Console.WriteLine("\nModalidade não encontrada! O cadastro foi cancelado.");
                 Console.WriteLine("Pressione qualquer tecla para voltar...");
                 Console.ReadKey();
-                return; // Encerra o método
+                return;
             }
 
-            // Agora passamos o OBJETO modalidade_escolhida, e não mais uma string
             Aluno novo_aluno = new Aluno(nome, cpf, telefone, modalidade_escolhida);
-
-            // Adiciona o aluno à lista central
             DadosAcademia.alunos.Add(novo_aluno);
 
             Console.WriteLine("\nAluno cadastrado com sucesso!");

@@ -9,7 +9,7 @@ public class TelaModalidades
         {
             Console.Clear();
             Console.WriteLine("=== Menu de Modalidades ===");
-            Console.WriteLine("[1] Cadastrar modalidade");
+            Console.WriteLine("[1] Cadastrar nova modalidade");
             Console.WriteLine("[2] Visualizar todas as modalidades");
             Console.WriteLine("[0] Voltar ao menu principal");
             Console.Write(">>> ");
@@ -39,7 +39,7 @@ public class TelaModalidades
         } while (opcao != 0);
     }
 
-    private void cadastrar_modalidade()
+    public void cadastrar_modalidade()
     {
         Console.Clear();
         Console.WriteLine("--- Cadastro de Nova Modalidade ---");
@@ -79,7 +79,7 @@ public class TelaModalidades
         Console.ReadKey();
     }
 
-    private void visualizar_modalidades()
+    public void visualizar_modalidades()
     {
         Console.Clear();
         Console.WriteLine("--- Lista de Modalidades Cadastradas ---");

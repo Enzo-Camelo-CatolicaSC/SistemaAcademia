@@ -19,16 +19,16 @@ namespace Academia
             this.nome = nome;
             this.cpf = cpf;
             this.telefone = telefone;
-            this.id = GerarID();
+            this.id = gerar_id();
         }
 
-        public int GerarID()
+        public int gerar_id()
         {
             // Lógica para gerar um ID único
             return new Random().Next(1000, 9999);
         }
 
-        public bool CpfEValido()
+        public bool cpf_e_valido()
         {
             // Lógica real de validação de CPF
             return true;

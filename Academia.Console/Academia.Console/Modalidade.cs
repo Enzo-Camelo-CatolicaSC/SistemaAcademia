@@ -2,9 +2,9 @@ using Academia;
 
 public class Modalidade
 {
-    public string nome { get; set; }
-    public float valor_mensal { get; set; }
-    public List<Instrutor> instrutores { get; private set; }
+    public string nome;
+    public float valor_mensal;
+    public List<Instrutor> instrutores;
 
     public Modalidade(string nome, float valor_mensal)
     {
