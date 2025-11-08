@@ -8,4 +8,5 @@ public static class DadosAcademia
     public static List<Modalidade> modalidades = new List<Modalidade>();
     public static List<Matricula> matriculas = new List<Matricula>();
     public static List<Aula> aulas = new List<Aula>();
+
 }

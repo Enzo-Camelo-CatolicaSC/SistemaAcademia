@@ -116,11 +116,125 @@ public class TelaAlunos
             {
                 Console.WriteLine($"ID: {aluno.id}");
                 Console.WriteLine($"Nome: {aluno.nome}");
-                // Agora acessamos a propriedade 'nome' do objeto modalidade
                 Console.WriteLine($"Modalidade Preferida: {aluno.modalidade_preferida.nome}");
-                Console.WriteLine($"Está Matriculado? {(aluno.esta_matriculado() ? "Sim" : "Não")}");
+                Console.WriteLine($"Está matriculado?: {(aluno.esta_matriculado()? "Sim" : "Não")}");
                 Console.WriteLine("---------------------------------");
             }
+        }
+
+        Console.Write("\nDeseja buscar um aluno pelo CPF? (s/n): ");
+        string opcao = Console.ReadLine().Trim().ToLower();
+
+        if (opcao == "s")
+        {
+            Console.Write("\nDigite o CPF do aluno que deseja buscar: ");
+            string cpfBusca = Console.ReadLine().Trim();
+
+            var alunoEncontrado = DadosAcademia.alunos
+                .Find(a => a.cpf.Equals(cpfBusca, StringComparison.OrdinalIgnoreCase));
+
+            Console.Clear();
+            if (alunoEncontrado != null)
+            {
+                Console.WriteLine("--- Aluno Encontrado ---");
+                Console.WriteLine($"ID: {alunoEncontrado.id}");
+                Console.WriteLine($"Nome: {alunoEncontrado.nome}");
+                Console.WriteLine($"CPF: {alunoEncontrado.cpf}");
+                Console.WriteLine($"Telefone: {alunoEncontrado.telefone}");
+                Console.WriteLine($"Modalidade Preferida: {alunoEncontrado.modalidade_preferida.nome}");
+                Console.WriteLine($"Está matriculado?: {(alunoEncontrado.esta_matriculado()? "Sim" : "Não")}");
+
+                Console.WriteLine("\nO que deseja fazer?");
+                Console.WriteLine("[1] Alterar dados do aluno");
+                Console.WriteLine("[2] Excluir aluno");
+                Console.WriteLine("[3] Voltar");
+                Console.Write("\nEscolha uma opção: ");
+                string escolha = Console.ReadLine().Trim();
+
+                switch (escolha)
+                {
+                    case "1":
+                        alterar_dados_aluno(alunoEncontrado);
+                        break;
+
+                    case "2":
+                        Console.Write("\nTem certeza que deseja excluir este aluno? (s/n): ");
+                        string confirma = Console.ReadLine().Trim().ToLower();
+
+                        if (confirma == "s")
+                        {
+                            DadosAcademia.alunos.Remove(alunoEncontrado);
+                            Console.WriteLine("\nAluno excluído com sucesso!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nOperação cancelada.");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("\nVoltando ao menu...");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum aluno encontrado com esse CPF.");
+            }
+        }
+
+        Console.WriteLine("\nPressione qualquer tecla para voltar...");
+        Console.ReadKey();
+    }
+public void alterar_dados_aluno(Aluno aluno)
+    {
+        Console.Clear();
+        Console.WriteLine($"--- Alterar Dados do Aluno: {aluno.nome} ---");
+
+        try
+        {
+            Console.WriteLine("\nPressione Enter para manter o valor atual.");
+
+            Console.Write($"\nNome atual ({aluno.nome}): ");
+            string novoNome = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoNome))
+                aluno.nome = novoNome;
+
+            Console.Write($"CPF atual ({aluno.cpf}): ");
+            string novoCpf = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoCpf))
+                aluno.cpf = novoCpf;
+
+            Console.Write($"Telefone atual ({aluno.telefone}): ");
+            string novoTelefone = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoTelefone))
+                aluno.telefone = novoTelefone;
+
+            Console.WriteLine("\nModalidades disponíveis:");
+            foreach (var mod in DadosAcademia.modalidades)
+            {
+                Console.WriteLine($"- {mod.nome}");
+            }
+
+            Console.Write($"\nModalidade atual ({aluno.modalidade_preferida.nome}): ");
+            string novaModalidadeNome = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(novaModalidadeNome))
+            {
+                Modalidade? novaModalidade = DadosAcademia.modalidades
+                    .FirstOrDefault(m => m.nome.Equals(novaModalidadeNome, StringComparison.OrdinalIgnoreCase));
+
+                if (novaModalidade != null)
+                    aluno.modalidade_preferida = novaModalidade;
+                else
+                    Console.WriteLine("Modalidade não encontrada. Mantendo a atual.");
+            };
+
+            Console.WriteLine("\nDados do aluno atualizados com sucesso!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nOcorreu um erro ao alterar os dados: {ex.Message}");
         }
 
         Console.WriteLine("\nPressione qualquer tecla para voltar...");

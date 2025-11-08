@@ -1,4 +1,7 @@
-﻿while (true)
+﻿
+using Academia;
+
+while (true)
 {
     Console.Clear();
     Console.WriteLine("\n=== Tela inicial ===\n");

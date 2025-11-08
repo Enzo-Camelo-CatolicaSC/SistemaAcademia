@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {}
+    "C:\\Users\\Ferna\\Documents\\GitHub\\SistemaAcademia\\SistemaAcademia\\Academia.Console\\academia.console\\academia.console.csproj": {}
   },
   "projects": {
-    "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj": {
+    "C:\\Users\\Ferna\\Documents\\GitHub\\SistemaAcademia\\SistemaAcademia\\Academia.Console\\academia.console\\academia.console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
-        "projectName": "Academia.Console",
-        "projectPath": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\Academia.Console.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "E:\\Desenvolvimento\\SistemaAcademia\\Academia.Console\\Academia.Console\\obj\\",
+        "projectUniqueName": "C:\\Users\\Ferna\\Documents\\GitHub\\SistemaAcademia\\SistemaAcademia\\Academia.Console\\academia.console\\academia.console.csproj",
+        "projectName": "academia.console",
+        "projectPath": "C:\\Users\\Ferna\\Documents\\GitHub\\SistemaAcademia\\SistemaAcademia\\Academia.Console\\academia.console\\academia.console.csproj",
+        "packagesPath": "C:\\Users\\Ferna\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ferna\\Documents\\GitHub\\SistemaAcademia\\SistemaAcademia\\Academia.Console\\academia.console\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ferna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

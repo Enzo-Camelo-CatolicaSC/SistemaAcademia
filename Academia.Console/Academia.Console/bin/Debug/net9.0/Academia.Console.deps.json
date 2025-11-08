@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v9.0": {
-      "Academia.Console/1.0.0": {
+      "academia.console/1.0.0": {
         "runtime": {
-          "Academia.Console.dll": {}
+          "academia.console.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Academia.Console/1.0.0": {
+    "academia.console/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

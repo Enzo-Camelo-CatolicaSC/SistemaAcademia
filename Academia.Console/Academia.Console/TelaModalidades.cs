@@ -1,4 +1,6 @@
 using Academia;
+using System;
+using System.Linq;
 
 public class TelaModalidades
 {
@@ -49,7 +51,7 @@ public class TelaModalidades
             Console.Write("Nome da modalidade: ");
             string nome = Console.ReadLine();
 
-            // Verifica se uma modalidade com o mesmo nome já existe
+            // Verifica se já existe
             if (DadosAcademia.modalidades.Any(m => m.nome.Equals(nome, StringComparison.OrdinalIgnoreCase)))
             {
                 Console.WriteLine("\nUma modalidade com este nome já existe. Cadastro cancelado.");
@@ -95,10 +97,8 @@ public class TelaModalidades
                 Console.WriteLine($"Nome: {modalidade.nome}");
                 Console.WriteLine($"Valor Mensal: {modalidade.valor_mensal:C}");
 
-                // Mostra a lista de instrutores associados a esta modalidade
                 if (modalidade.instrutores.Any())
                 {
-                    // Mapeia a lista de objetos Instrutor para uma lista de nomes
                     var nomes_instrutores = modalidade.instrutores.Select(i => i.nome);
                     Console.WriteLine($"Instrutores: {string.Join(", ", nomes_instrutores)}");
                 }
@@ -108,6 +108,110 @@ public class TelaModalidades
                 }
                 Console.WriteLine("--------------------------------------");
             }
+
+            Console.Write("\nDeseja buscar uma modalidade específica? (S/N): ");
+            string opcaoBusca = Console.ReadLine().Trim().ToUpper();
+
+            if (opcaoBusca == "S")
+            {
+                buscar_modalidade();
+            }
+        }
+
+        Console.WriteLine("\nPressione qualquer tecla para voltar...");
+        Console.ReadKey();
+    }
+
+    private void buscar_modalidade()
+    {
+        Console.Clear();
+        Console.WriteLine("--- Buscar Modalidade ---");
+        Console.Write("Digite o nome da modalidade: ");
+        string nomeBusca = Console.ReadLine();
+
+        Modalidade modalidadeEncontrada = DadosAcademia.modalidades
+            .FirstOrDefault(m => m.nome.Equals(nomeBusca, StringComparison.OrdinalIgnoreCase));
+
+        if (modalidadeEncontrada == null)
+        {
+            Console.WriteLine("\nModalidade não encontrada!");
+            Console.WriteLine("Pressione qualquer tecla para voltar...");
+            Console.ReadKey();
+            return;
+        }
+
+        Console.Clear();
+        Console.WriteLine("--- Dados da Modalidade ---");
+        Console.WriteLine($"Nome: {modalidadeEncontrada.nome}");
+        Console.WriteLine($"Valor Mensal: {modalidadeEncontrada.valor_mensal:C}");
+
+        if (modalidadeEncontrada.instrutores.Any())
+        {
+            var nomes_instrutores = modalidadeEncontrada.instrutores.Select(i => i.nome);
+            Console.WriteLine($"Instrutores: {string.Join(", ", nomes_instrutores)}");
+        }
+        else
+        {
+            Console.WriteLine("Instrutores: Nenhum instrutor associado.");
+        }
+
+        Console.WriteLine("\n[1] Alterar dados da modalidade");
+        Console.WriteLine("[2] Excluir modalidade");
+        Console.WriteLine("[0] Voltar");
+        Console.Write(">>> ");
+        string opcao = Console.ReadLine();
+
+        switch (opcao)
+        {
+            case "1":
+                alterar_modalidade(modalidadeEncontrada);
+                break;
+            case "2":
+                excluir_modalidade(modalidadeEncontrada);
+                break;
+            default:
+                Console.WriteLine("Voltando...");
+                break;
+        }
+    }
+
+    private void alterar_modalidade(Modalidade modalidade)
+    {
+        Console.Clear();
+        Console.WriteLine("--- Alterar Dados da Modalidade ---");
+
+        Console.Write($"Novo nome (atual: {modalidade.nome}): ");
+        string novo_nome = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(novo_nome))
+        {
+            modalidade.nome = novo_nome;
+        }
+
+        Console.Write($"Novo valor mensal (atual: {modalidade.valor_mensal:C}): ");
+        string novo_valor_str = Console.ReadLine();
+        if (float.TryParse(novo_valor_str, out float novo_valor))
+        {
+            modalidade.valor_mensal = novo_valor;
+        }
+
+        Console.WriteLine("\nDados da modalidade atualizados com sucesso!");
+        Console.WriteLine("Pressione qualquer tecla para voltar...");
+        Console.ReadKey();
+    }
+
+    private void excluir_modalidade(Modalidade modalidade)
+    {
+        Console.Write("\nTem certeza que deseja excluir esta modalidade? (S/N): ");
+        string confirm = Console.ReadLine().Trim().ToUpper();
+
+        if (confirm == "S")
+        {
+            DadosAcademia.modalidades.Remove(modalidade);
+            Console.WriteLine("Modalidade excluída com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Exclusão cancelada.");
         }
 
         Console.WriteLine("\nPressione qualquer tecla para voltar...");

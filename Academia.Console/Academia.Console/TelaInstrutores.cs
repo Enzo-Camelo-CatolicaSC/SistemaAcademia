@@ -32,10 +32,10 @@ public class TelaInstrutores
                 case 2:
                     visualizar_instrutores();
                     break;
-                case 3: // <-- NOVO CASE
+                case 3:
                     visualizar_proxima_aula();
                     break;
-                case 4: // <-- CASE ANTIGO RE-NUMERADO
+                case 4:
                     associar_instrutor_modalidade();
                     break;
                 default:
@@ -91,7 +91,7 @@ public class TelaInstrutores
         Console.Clear();
         Console.WriteLine("--- Lista de Instrutores Cadastrados ---");
 
-        if (!DadosAcademia.instrutores.Any())
+        if (DadosAcademia.instrutores.Count == 0)
         {
             Console.WriteLine("Nenhum instrutor cadastrado no sistema.");
         }
@@ -101,26 +101,167 @@ public class TelaInstrutores
             {
                 Console.WriteLine($"ID: {instrutor.id}");
                 Console.WriteLine($"Nome: {instrutor.nome}");
-                Console.WriteLine($"Salário: {instrutor.salario:C}");
-
-                if (instrutor.modalidades.Any())
-                {
-                    Console.WriteLine($"Modalidades: {string.Join(", ", instrutor.modalidades)}");
-                }
-                else
-                {
-                    Console.WriteLine("Modalidades: Nenhuma associada.");
-                }
+                Console.WriteLine($"CPF: {instrutor.cpf}");
+                Console.WriteLine($"Telefone: {instrutor.telefone}");
+                Console.WriteLine($"Modalidades: {string.Join(", ", instrutor.modalidades)}");
                 Console.WriteLine("---------------------------------");
             }
         }
 
-        // A lógica de perguntar o ID foi removida daqui.
+        Console.Write("\nDeseja buscar um instrutor pelo CPF? (s/n): ");
+        string resposta = Console.ReadLine().ToLower();
+
+        if (resposta == "s")
+        {
+            buscar_instrutor_por_cpf();
+        }
+        else
+        {
+            Console.WriteLine("\nPressione qualquer tecla para voltar...");
+            Console.ReadKey();
+        }
+    }
+
+    public void buscar_instrutor_por_cpf()
+    {
+        Console.Write("\nDigite o CPF do instrutor que deseja buscar: ");
+        string cpfBusca = Console.ReadLine();
+
+        var instrutor = DadosAcademia.instrutores
+            .FirstOrDefault(i => i.cpf.Equals(cpfBusca, StringComparison.OrdinalIgnoreCase));
+
+        if (instrutor == null)
+        {
+            Console.WriteLine("\nInstrutor não encontrado.");
+            Console.WriteLine("Pressione qualquer tecla para voltar...");
+            Console.ReadKey();
+            return;
+        }
+
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("--- Dados do Instrutor ---");
+            Console.WriteLine($"ID: {instrutor.id}");
+            Console.WriteLine($"Nome: {instrutor.nome}");
+            Console.WriteLine($"CPF: {instrutor.cpf}");
+            Console.WriteLine($"Telefone: {instrutor.telefone}");
+            Console.WriteLine($"Modalidades: {string.Join(", ", instrutor.modalidades)}");
+            Console.WriteLine("------------------------------");
+
+            Console.WriteLine("\n[1] Alterar dados do instrutor");
+            Console.WriteLine("[2] Excluir instrutor");
+            Console.WriteLine("[0] Voltar");
+            Console.Write(">>> ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    alterar_instrutor(instrutor);
+                    break;
+                case 2:
+                    excluir_instrutor(instrutor);
+                    opcao = 0; // sai do loop após exclusão
+                    break;
+                case 0:
+                    Console.WriteLine("Voltando...");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida! Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
+                    break;
+            }
+
+        } while (opcao != 0);
+    }
+
+    public void alterar_instrutor(Instrutor instrutor)
+    {
+        Console.Clear();
+        Console.WriteLine("--- Alterar Dados do Instrutor ---");
+
+        try
+        {
+            Console.Write($"Nome atual ({instrutor.nome}): ");
+            string novoNome = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoNome))
+                instrutor.nome = novoNome;
+
+            Console.Write($"CPF atual ({instrutor.cpf}): ");
+            string novoCpf = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoCpf))
+                instrutor.cpf = novoCpf;
+
+            Console.Write($"Telefone atual ({instrutor.telefone}): ");
+            string novoTelefone = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(novoTelefone))
+                instrutor.telefone = novoTelefone;
+
+            Console.WriteLine("\nModalidades disponíveis:");
+            foreach (var mod in DadosAcademia.modalidades)
+            {
+                Console.WriteLine($"- {mod.nome}");
+            }
+
+            Console.Write($"Modalidades atuais ({string.Join(", ", instrutor.modalidades)}). Digite o nome da nova (ou deixe em branco): ");
+            string novaModalidadeNome = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(novaModalidadeNome))
+            {
+                var novaModalidade = DadosAcademia.modalidades
+                    .FirstOrDefault(m => m.nome.Equals(novaModalidadeNome, StringComparison.OrdinalIgnoreCase));
+
+                if (novaModalidade != null)
+                    instrutor.modalidades.Add(novaModalidade.nome);
+                else
+                    Console.WriteLine("Modalidade não encontrada. Mantendo a anterior.");
+            }
+
+            Console.WriteLine("\nInstrutor atualizado com sucesso!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nErro ao alterar instrutor: {ex.Message}");
+        }
+
         Console.WriteLine("\nPressione qualquer tecla para voltar...");
         Console.ReadKey();
     }
 
-    // --- NOVO MÉTODO DEDICADO ---
+    public void excluir_instrutor(Instrutor instrutor)
+    {
+        Console.Clear();
+        Console.WriteLine("--- Exclusão de Instrutor ---");
+
+        Console.WriteLine($"ID: {instrutor.id}");
+        Console.WriteLine($"Nome: {instrutor.nome}");
+        Console.WriteLine($"CPF: {instrutor.cpf}");
+        Console.WriteLine($"Modalidades: {string.Join(", ", instrutor.modalidades)}");
+        Console.WriteLine("---------------------------------");
+
+        Console.Write("\nTem certeza que deseja excluir este instrutor? (s/n): ");
+        string confirmacao = Console.ReadLine().ToLower();
+
+        if (confirmacao == "s")
+        {
+            DadosAcademia.instrutores.Remove(instrutor);
+            Console.WriteLine("\nInstrutor excluído com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("\nExclusão cancelada.");
+        }
+
+        Console.WriteLine("\nPressione qualquer tecla para voltar...");
+        Console.ReadKey();
+    }
+
     public void visualizar_proxima_aula()
     {
         Console.Clear();
@@ -134,7 +275,6 @@ public class TelaInstrutores
             return;
         }
 
-        // Mostra a lista de instrutores para o usuário saber qual ID digitar
         Console.WriteLine("Instrutores disponíveis:");
         foreach (var instrutor in DadosAcademia.instrutores)
         {
@@ -157,7 +297,6 @@ public class TelaInstrutores
 
             if (instrutor_selecionado != null)
             {
-                // Chama o método do objeto instrutor
                 string proxima_aula_info = instrutor_selecionado.aula_mais_proxima();
 
                 Console.WriteLine($"\nVerificando agenda para: {instrutor_selecionado.nome}");
@@ -182,7 +321,6 @@ public class TelaInstrutores
         Console.Clear();
         Console.WriteLine("--- Associar Instrutor a uma Modalidade ---");
 
-        // Passo 1: Selecionar o instrutor
         Console.WriteLine("Instrutores disponíveis:");
         foreach (var instrutor in DadosAcademia.instrutores)
         {
@@ -204,7 +342,6 @@ public class TelaInstrutores
             return;
         }
 
-        // Passo 2: Selecionar a modalidade
         Console.WriteLine("\nModalidades disponíveis:");
         foreach (var mod in DadosAcademia.modalidades)
         {
@@ -223,7 +360,6 @@ public class TelaInstrutores
             return;
         }
 
-        // Passo 3: Fazer a associação
         modalidade_selecionada.adicionar_instrutor(instrutor_selecionado);
 
         Console.WriteLine($"\nSucesso! O instrutor {instrutor_selecionado.nome} agora está apto a lecionar {modalidade_selecionada.nome}.");
