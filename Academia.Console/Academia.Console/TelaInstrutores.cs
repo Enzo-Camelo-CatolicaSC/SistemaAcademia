@@ -196,7 +196,16 @@ public class TelaInstrutores
             Console.Write($"CPF atual ({instrutor.cpf}): ");
             string novoCpf = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(novoCpf))
-                instrutor.cpf = novoCpf;
+            {
+                try
+                {
+                    instrutor.alterar_cpf(novoCpf);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"-> Erro: {ex.Message}. O CPF não foi alterado.");
+                }
+            }
 
             Console.Write($"Telefone atual ({instrutor.telefone}): ");
             string novoTelefone = Console.ReadLine();

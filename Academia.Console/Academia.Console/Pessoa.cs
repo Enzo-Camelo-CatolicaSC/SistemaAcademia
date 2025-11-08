@@ -12,9 +12,8 @@ namespace Academia
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException("Nome não pode ser vazio.");
 
-            // Aqui você colocaria uma validação de CPF mais robusta
-            if (string.IsNullOrWhiteSpace(cpf) || cpf.Length != 11)
-                throw new ArgumentException("CPF inválido.");
+            if (!validar_cpf(cpf))
+                throw new ArgumentException("O CPF fornecido é inválido.");
 
             this.nome = nome;
             this.cpf = cpf;
@@ -24,13 +23,22 @@ namespace Academia
 
         public int gerar_id()
         {
-            // Lógica para gerar um ID único
             return new Random().Next(1000, 9999);
         }
 
-        public bool cpf_e_valido()
+        public void alterar_cpf(string novo_cpf)
         {
-            // Lógica real de validação de CPF
+            if (!validar_cpf(novo_cpf))
+            {
+                throw new ArgumentException("O novo CPF fornecido é inválido.");
+            }
+            this.cpf = novo_cpf.Trim().Replace(".", "").Replace("-", "");
+        }
+
+        public bool validar_cpf(string cpf)
+        {
+            if (this.cpf.Length != 11)
+                return false;
             return true;
         }
     }

@@ -203,7 +203,16 @@ public void alterar_dados_aluno(Aluno aluno)
             Console.Write($"CPF atual ({aluno.cpf}): ");
             string novoCpf = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(novoCpf))
-                aluno.cpf = novoCpf;
+            {
+                try
+                {
+                    aluno.alterar_cpf(novoCpf);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"-> Erro: {ex.Message}. O CPF não foi alterado.");
+                }
+            }
 
             Console.Write($"Telefone atual ({aluno.telefone}): ");
             string novoTelefone = Console.ReadLine();
