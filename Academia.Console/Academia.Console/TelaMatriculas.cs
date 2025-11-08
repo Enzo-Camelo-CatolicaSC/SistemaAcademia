@@ -142,6 +142,7 @@ public class TelaMatriculas
                 var nomes_modalidades = matricula.modalidades.Select(m => m.nome);
                 Console.WriteLine($"ID da Matrícula: {matricula.id}");
                 Console.WriteLine($"Aluno: {matricula.aluno.nome}");
+                Console.WriteLine($"CPF: {matricula.aluno.cpf}");
                 Console.WriteLine($"Modalidades: {string.Join(", ", nomes_modalidades)}");
                 Console.WriteLine($"Valor do Plano: {matricula.valor_total:C}");
                 Console.WriteLine($"Data da Matrícula: {matricula.data_matricula:dd/MM/yyyy}");
@@ -151,8 +152,7 @@ public class TelaMatriculas
             }
         }
 
-        // 🟢 Corrigido: busca por CPF, não por ID
-        Console.Write("\nDeseja buscar uma matrícula pelo CPF? (s/n): ");
+        Console.Write("\nDeseja buscar uma matrícula pelo CPF do aluno? (s/n): ");
         string resposta = Console.ReadLine().ToLower();
 
         if (resposta == "s")
@@ -314,7 +314,7 @@ public class TelaMatriculas
 
         if (confirmacao == "s")
         {
-            DadosAcademia.matriculas.Remove(matricula);
+            matricula.cancelar_matricula();
             Console.WriteLine("\nMatrícula cancelada com sucesso!");
         }
         else

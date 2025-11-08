@@ -60,7 +60,7 @@ public class TelaAlunos
             Console.Write("Nome completo: ");
             string nome = Console.ReadLine();
 
-            Console.Write("CPF (apenas números): ");
+            Console.Write("CPF (apenas 11 numeros): ");
             string cpf = Console.ReadLine();
 
             Console.Write("Telefone: ");
@@ -116,6 +116,7 @@ public class TelaAlunos
             {
                 Console.WriteLine($"ID: {aluno.id}");
                 Console.WriteLine($"Nome: {aluno.nome}");
+                Console.WriteLine($"CPF: {aluno.cpf}");
                 Console.WriteLine($"Modalidade Preferida: {aluno.modalidade_preferida.nome}");
                 Console.WriteLine($"Está matriculado?: {(aluno.esta_matriculado()? "Sim" : "Não")}");
                 Console.WriteLine("---------------------------------");
@@ -130,8 +131,7 @@ public class TelaAlunos
             Console.Write("\nDigite o CPF do aluno que deseja buscar: ");
             string cpfBusca = Console.ReadLine().Trim();
 
-            var alunoEncontrado = DadosAcademia.alunos
-                .Find(a => a.cpf.Equals(cpfBusca, StringComparison.OrdinalIgnoreCase));
+            var alunoEncontrado = DadosAcademia.alunos.Find(a => a.cpf.Equals(cpfBusca, StringComparison.OrdinalIgnoreCase));
 
             Console.Clear();
             if (alunoEncontrado != null)

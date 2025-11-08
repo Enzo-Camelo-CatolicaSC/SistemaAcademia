@@ -26,8 +26,6 @@ namespace Academia
         public string aula_mais_proxima()
         {
             var agora = DateTime.Now;
-
-            // Garante que a lista de aulas existe antes de usar
             List<Aula> todasAulas = DadosAcademia.aulas != null
                 ? DadosAcademia.aulas
                 : new List<Aula>();

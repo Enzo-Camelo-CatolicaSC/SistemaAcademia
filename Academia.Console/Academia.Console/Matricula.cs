@@ -56,6 +56,7 @@ namespace Academia
         public void cancelar_matricula()
         {
             this.esta_ativa = false;
+            this.aluno.cancelar_matricula();
             Console.WriteLine($"Matrícula {this.id} do aluno {this.aluno.nome} foi cancelada.");
         }
 

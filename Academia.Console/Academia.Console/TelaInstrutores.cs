@@ -57,7 +57,7 @@ public class TelaInstrutores
             Console.Write("Nome completo: ");
             string nome = Console.ReadLine();
 
-            Console.Write("CPF (apenas números): ");
+            Console.Write("CPF (apenas 11 números): ");
             string cpf = Console.ReadLine();
 
             Console.Write("Telefone: ");
@@ -209,7 +209,7 @@ public class TelaInstrutores
                 Console.WriteLine($"- {mod.nome}");
             }
 
-            Console.Write($"Modalidades atuais ({string.Join(", ", instrutor.modalidades)}). Digite o nome da nova (ou deixe em branco): ");
+            Console.Write($"\nModalidades atuais ({string.Join(", ", instrutor.modalidades)}).\nDigite o nome da nova modalidade (ou deixe em branco): ");
             string novaModalidadeNome = Console.ReadLine();
 
             if (!string.IsNullOrWhiteSpace(novaModalidadeNome))

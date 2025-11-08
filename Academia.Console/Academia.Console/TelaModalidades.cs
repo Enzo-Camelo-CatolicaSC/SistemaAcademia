@@ -129,8 +129,7 @@ public class TelaModalidades
         Console.Write("Digite o nome da modalidade: ");
         string nomeBusca = Console.ReadLine();
 
-        Modalidade modalidadeEncontrada = DadosAcademia.modalidades
-            .FirstOrDefault(m => m.nome.Equals(nomeBusca, StringComparison.OrdinalIgnoreCase));
+        Modalidade modalidadeEncontrada = DadosAcademia.modalidades.FirstOrDefault(m => m.nome.Equals(nomeBusca, StringComparison.OrdinalIgnoreCase));
 
         if (modalidadeEncontrada == null)
         {

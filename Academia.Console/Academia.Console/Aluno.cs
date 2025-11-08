@@ -22,6 +22,11 @@ public class Aluno : Pessoa
         this.matriculado = true;
     }
 
+    public void cancelar_matricula()
+    {
+        this.matriculado = false;
+    }
+
     public bool esta_matriculado()
     {
         return this.matriculado;
